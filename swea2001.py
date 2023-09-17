@@ -1,16 +1,14 @@
-# This is a sample Python script.
+t = int(input())
+for tc in range(t):
+    n,m = map(int,input().split())
+    arr = [list(map(int,input().split())) for _ in range(n)]
 
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    maxKill = 0
+    for i in range(n-m+1):
+        for j in range(n-m+1):
+            fly = 0
+            for k in range(m):
+                for l in range(m):
+                    fly += arr[k+i][l+j]
+            maxKill = fly if fly > maxKill else maxKill
+    print('#{} {}'.format(tc+1,maxKill))
